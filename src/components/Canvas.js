@@ -46,7 +46,7 @@ const Canvas = (props) => {
     if (tool === "note" && props.popUpText.length > 0) {
       dropNotesOnCanvas();
     }
-  }, [props.tool, props.popUpText.length, tool, dropNotesOnCanvas]);
+  }, [props.tool, props.popUpText.length, tool]);
 
   //handnling textareas with tools
   useEffect(() => {
