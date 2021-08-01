@@ -63,7 +63,7 @@ const Canvas = (props) => {
       props.setTool("");
       props.setPopUpText("");
     }
-  }, [props.tool, props.popUpText.length, tool]);
+  }, [props, noteCounter, tool]);
 
   //handnling textareas with tools
   useEffect(() => {
