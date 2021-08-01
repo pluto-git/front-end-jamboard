@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import { Stage, Layer, Line } from "react-konva";
-import { dragmove } from "@knadh/dragmove";
 
 const Canvas = (props) => {
   const [tool, setTool] = useState(props.tool);
