@@ -20,36 +20,13 @@ const Canvas = (props) => {
     setWidth(offsetWidth);
   }, []);
 
-  // const dropNotesOnCanvas = () => {
-  //   if (tool !== "note") {
-  //     return;
-  //   }
-  //   const textArea = document.createElement("textarea");
-  //   textArea.value = props.popUpText;
-
-  //   textArea.className =
-  //     "textArea textArea rounded-lg bg-pink-500 hover:cursor-pointer hover:border hover:border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-600 resize " +
-  //     noteCounter;
-  //   textArea.style.position = "absolute";
-  //   textArea.style.left = 350 + "px";
-  //   textArea.style.top = 250 + "px";
-  //   containerRef.current.appendChild(textArea);
-  //   // textArea.focus();
-
-  //   setNoteCounter((prev) => prev + 1);
-  //   props.setTool("");
-  //   props.setPopUpText("");
-  // };
   //drop a note on the screen.
   useEffect(() => {
     setTool(props.tool);
     if (tool === "note" && props.popUpText.length > 0) {
-      if (tool !== "note") {
-        return;
-      }
       const textArea = document.createElement("textarea");
       textArea.value = props.popUpText;
-  
+
       textArea.className =
         "textArea textArea rounded-lg bg-pink-500 hover:cursor-pointer hover:border hover:border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-600 resize " +
         noteCounter;
@@ -58,7 +35,7 @@ const Canvas = (props) => {
       textArea.style.top = 250 + "px";
       containerRef.current.appendChild(textArea);
       // textArea.focus();
-  
+
       setNoteCounter((prev) => prev + 1);
       props.setTool("");
       props.setPopUpText("");
@@ -74,8 +51,10 @@ const Canvas = (props) => {
           if (tool === "eraser") {
             e.target.remove();
           } else if (tool !== "text") {
+            
             e.target.readOnly = true;
           } else if (tool === "text") {
+
             e.target.focus();
             e.target.readOnly = false;
           }
@@ -89,7 +68,6 @@ const Canvas = (props) => {
     if (containerRef.current !== null) {
       containerRef.current.addEventListener("click", (e) => {
         if (e.target && e.target.tagName === "TEXTAREA" && tool !== "eraser") {
-          // dragmove(e.target, containerRef.current);
           const dragItem = e.target;
           const container = containerRef.current;
           let active = false;
@@ -180,7 +158,6 @@ const Canvas = (props) => {
   const handleMouseUp = () => {
     if (tool === "pen" || tool === "eraser") isDrawing.current = false;
   };
-
 
   const handlleClicksAndTextArea = (e) => {
     if (tool === "text") {
